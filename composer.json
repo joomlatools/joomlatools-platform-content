@@ -1,0 +1,19 @@
+{
+  "name": "joomlatools/joomla-platform-tags",
+  "type": "joomla-installer",
+  "license": "GPLv3",
+  "description": "Tags extension for the Joomlatools Platform",
+  "keywords": ["joomla", "extension", "platform"],
+  "homepage": "https://github.com/joomlatools/joomla-platform-tags",
+  "authors": [
+    {
+      "name": "Timble",
+      "email": "info@timble.net",
+      "homepage": "http://www.timble.net"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "joomlatools/installer": "*"
+  }
+}

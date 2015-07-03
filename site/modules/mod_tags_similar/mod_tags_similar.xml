@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>mod_tags_similar</name>
+	<author>Joomlatools</author>
+	<creationDate>January 2013</creationDate>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <copyright>Copyright (C) 2015 Timble CVBA (http://www.timble.net)</copyright>
+    <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>info@joomlatools.com</authorEmail>
+    <authorUrl>www.joomlatools.com</authorUrl>
+    <version>1.0.0</version>
+	<description>MOD_TAGS_SIMILAR_XML_DESCRIPTION</description>
+
+    <files>
+		<filename module="mod_tags_similar">mod_tags_similar.php</filename>
+        <filename>helper.php</filename>
+        <folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="maximum"
+					type="integer"
+					default="5"
+					first="1"
+					last="20"
+					step="1"
+					label="MOD_TAGS_SIMILAR_MAX_LABEL"
+					description="MOD_TAGS_SIMILAR_MAX_DESC">
+				</field>
+				<field
+					name="matchtype"
+					type="list"
+					default="any"
+					label="MOD_TAGS_SIMILAR_FIELD_MATCHTYPE_LABEL"
+					description="MOD_TAGS_SIMILAR_FIELD_MATCHTYPE_DESC">
+					<option
+						value="all">MOD_TAGS_SIMILAR_FIELD_ALL</option>
+					<option
+						value="any">MOD_TAGS_SIMILAR_FIELD_ONE</option>
+					<option
+						value="half">MOD_TAGS_SIMILAR_FIELD_HALF</option>
+				</field>
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field
+					name="moduleclass_sfx"
+					type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="owncache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
