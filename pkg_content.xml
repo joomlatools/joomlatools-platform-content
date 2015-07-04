@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <extension version="1.0.0" type="package" method="upgrade">
-    <identifier>pkg:tags</identifier>
-    <name>pkg_tags</name>
-    <packagename>tags</packagename>
+    <identifier>pkg:content</identifier>
+    <name>pkg_content</name>
+    <packagename>content</packagename>
     <author>Joomlatools</author>
     <creationDate>June 2015</creationDate>
     <copyright>Copyright (C) 2015 Timble CVBA (http://www.timble.net)</copyright>
@@ -10,7 +10,7 @@
     <authorEmail>support@joomlatools.com</authorEmail>
     <authorUrl>www.joomlatools.com</authorUrl>
     <version>1.0.0</version>
-    <description>Tags extension for the Joomla Platform</description>
+    <description>Content extension for the Joomla Platform</description>
 
     <files>
         <file type="component" id="com_tags">administrator/components</file>
