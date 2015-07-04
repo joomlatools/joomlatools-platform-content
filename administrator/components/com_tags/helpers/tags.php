@@ -71,7 +71,7 @@ class TagsHelperTags extends JHelperTags
 		$tags = array_unique($tags);
 
 		$query = $db->getQuery(true);
-		$query->insert('#__contentitem_tag_map');
+		$query->insert('#__tags_map');
 		$query->columns(array($db->quoteName('type_alias'), $db->quoteName('core_content_id'), $db->quoteName('content_item_id'), $db->quoteName('tag_id'), $db->quoteName('tag_date'),  $db->quoteName('type_id')));
 
 		foreach ($tags as $tag)
@@ -286,7 +286,7 @@ class TagsHelperTags extends JHelperTags
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select($db->quoteName('m.tag_id'))
-			->from($db->quoteName('#__contentitem_tag_map') . ' AS m ')
+			->from($db->quoteName('#__tags_map') . ' AS m ')
 			->where(
 				array(
 					$db->quoteName('m.type_alias') . ' = ' . $db->quote($contentType),
@@ -364,7 +364,7 @@ class TagsHelperTags extends JHelperTags
 			->select($db->quoteName('t.id'))
 			->from($db->quoteName('#__tags') . ' AS t ')
 			->join(
-				'INNER', $db->quoteName('#__contentitem_tag_map') . ' AS m'
+				'INNER', $db->quoteName('#__tags_map') . ' AS m'
 				. ' ON ' . $db->quoteName('m.tag_id') . ' = ' . $db->quoteName('t.id')
 				. ' AND ' . $db->quoteName('m.type_alias') . ' = ' . $db->quote($prefix)
 				. ' AND ' . $db->quoteName('m.content_item_id') . ' IN ( ' . implode(',', $ids) . ')'
@@ -443,7 +443,7 @@ class TagsHelperTags extends JHelperTags
 			->select('MAX(c.core_publish_up) AS core_publish_up, MAX(c.core_publish_down) as core_publish_down')
 			->select('MAX(ct.type_title) AS content_type_title, MAX(ct.router) AS router')
 
-			->from('#__contentitem_tag_map AS m')
+			->from('#__tags_map AS m')
 			->join('INNER', '#__ucm_content AS c ON m.type_alias = c.core_type_alias AND m.core_content_id = c.core_content_id AND c.core_state IN (' . implode(',', $stateFilters) . ')' . (in_array('0', $stateFilters) ? '' : ' AND (c.core_publish_up = ' . $nullDate . ' OR c.core_publish_up <= ' . $nowDate . ') AND (c.core_publish_down = ' . $nullDate . ' OR  c.core_publish_down >= ' . $nowDate . ')'))
 			->join('INNER', '#__content_types AS ct ON ct.type_alias = m.type_alias')
 
@@ -854,7 +854,7 @@ class TagsHelperTags extends JHelperTags
 		// Delete the old tag maps.
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
-			->delete($db->quoteName('#__contentitem_tag_map'))
+			->delete($db->quoteName('#__tags_map'))
 			->where($db->quoteName('tag_id') . ' = ' . (int) $tag_id);
 		$db->setQuery($query);
 		$db->execute();
@@ -925,7 +925,7 @@ class TagsHelperTags extends JHelperTags
 		$id = $table->$key;
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
-			->delete('#__contentitem_tag_map')
+			->delete('#__tags_map')
 			->where($db->quoteName('type_alias') . ' = ' . $db->quote($this->typeAlias))
 			->where($db->quoteName('content_item_id') . ' = ' . (int) $id);
 

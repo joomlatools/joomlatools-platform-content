@@ -56,7 +56,7 @@ abstract class ModTagsPopularHelper
 				)
 			)
 			->group($db->quoteName(array('tag_id', 'title', 'access', 'alias')))
-			->from($db->quoteName('#__contentitem_tag_map', 'm'))
+			->from($db->quoteName('#__tags_map', 'm'))
 			->where($db->quoteName('t.access') . ' IN (' . $groups . ')');
 
 		// Only return published tags
