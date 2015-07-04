@@ -59,7 +59,7 @@ class PlgFinderTags extends FinderIndexerAdapter
 	 * @var    string
 	 * @since  3.1
 	 */
-	protected $table = '#__tags';
+	protected $table = '#__content_tags';
 
 	/**
 	 * Load the language file on instantiation.
@@ -311,12 +311,12 @@ class PlgFinderTags extends FinderIndexerAdapter
 		$case_when_item_alias .= ' ELSE ';
 		$case_when_item_alias .= $a_id . ' END as slug';
 		$query->select($case_when_item_alias)
-			->from('#__tags AS a');
+			->from('#__content_tags AS a');
 
 		// Join the #__users table
 		$query->select('u.name AS author')
 			->join('LEFT', '#__users AS u ON u.id = b.created_user_id')
-			->from('#__tags AS b');
+			->from('#__content_tags AS b');
 
 		// Exclude the ROOT item
 		$query->where($db->quoteName('a.id') . ' > 1');

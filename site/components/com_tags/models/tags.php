@@ -124,7 +124,7 @@ class TagsModelTags extends JModelList
 		// Select required fields from the tags.
 		$query->select('a.*')
 
-			->from($db->quoteName('#__tags') . ' AS a')
+			->from($db->quoteName('#__content_tags') . ' AS a')
 			->where($db->quoteName('a.access') . ' IN (' . $groups . ')');
 
 		if (!empty($pid))

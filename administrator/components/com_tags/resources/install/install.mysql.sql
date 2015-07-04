@@ -4,7 +4,7 @@
 -- Table structure for table `tags`
 --
 
-CREATE TABLE IF NOT EXISTS `#__tags` (
+CREATE TABLE IF NOT EXISTS `#__content_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT 0,
   `lft` int(11) NOT NULL DEFAULT 0,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `#__tags` (
 -- Table structure for table `tags_map`
 --
 
-CREATE TABLE IF NOT EXISTS `tags_map` (
+CREATE TABLE IF NOT EXISTS `#__content_tags_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',

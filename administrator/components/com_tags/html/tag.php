@@ -46,7 +46,7 @@ abstract class JHtmlTag
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true)
 				->select('a.id, a.title, a.level')
-				->from('#__tags AS a')
+				->from('#__content_tags AS a')
 				->where('a.parent_id > 0');
 
 			// Filter on the published state
@@ -116,7 +116,7 @@ abstract class JHtmlTag
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('a.id, a.title, a.level, a.parent_id')
-			->from('#__tags AS a')
+			->from('#__content_tags AS a')
 			->where('a.parent_id > 0');
 
 		// Filter on the published state

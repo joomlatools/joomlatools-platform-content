@@ -117,8 +117,8 @@ class JFormFieldTag extends JFormFieldList
 		$db		= JFactory::getDbo();
 		$query	= $db->getQuery(true)
 			->select('a.id AS value, a.path, a.title AS text, a.level, a.published')
-			->from('#__tags AS a')
-			->join('LEFT', $db->quoteName('#__tags') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt');
+			->from('#__content_tags AS a')
+			->join('LEFT', $db->quoteName('#__content_tags') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt');
 
 		// Ajax tag only loads assigned values
 		if (!$this->isNested() && !empty($this->value))

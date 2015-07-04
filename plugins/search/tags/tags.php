@@ -117,7 +117,7 @@ class PlgSearchTags extends JPlugin
 		$case_when_item_alias .= $a_id . ' END as slug';
 		$query->select($case_when_item_alias);
 
-		$query->from('#__tags AS a');
+		$query->from('#__content_tags AS a');
 		$query->where('a.alias <> ' . $db->quote('root'));
 
 		$query->where('(a.title LIKE ' . $text . ' OR a.alias LIKE ' . $text . ')');

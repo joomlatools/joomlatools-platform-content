@@ -56,7 +56,7 @@ abstract class ModTagsPopularHelper
 				)
 			)
 			->group($db->quoteName(array('tag_id', 'title', 'access', 'alias')))
-			->from($db->quoteName('#__tags_map', 'm'))
+			->from($db->quoteName('#__content_tags_map', 'm'))
 			->where($db->quoteName('t.access') . ' IN (' . $groups . ')');
 
 		// Only return published tags
@@ -80,7 +80,7 @@ abstract class ModTagsPopularHelper
 			$query->where($db->quoteName('tag_date') . ' > ' . $query->dateAdd($nowDate, '-1', strtoupper($timeframe)));
 		}
 
-		$query->join('INNER', $db->quoteName('#__tags', 't') . ' ON ' . $db->quoteName('tag_id') . ' = t.id')
+		$query->join('INNER', $db->quoteName('#__content_tags', 't') . ' ON ' . $db->quoteName('tag_id') . ' = t.id')
 			->join('INNER', $db->quoteName('#__ucm_content', 'c') . ' ON ' . $db->quoteName('m.core_content_id') . ' = ' . $db->quoteName('c.core_content_id'))
 			->order($order_value . ' ' . $order_direction);
 
