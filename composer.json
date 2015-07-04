@@ -1,10 +1,10 @@
 {
-  "name": "joomlatools/joomla-platform-tags",
+  "name": "joomlatools/joomla-platform-content",
   "type": "joomla-installer",
   "license": "GPLv3",
-  "description": "Tags extension for the Joomlatools Platform",
+  "description": "Content extension for the Joomlatools Platform",
   "keywords": ["joomla", "extension", "platform"],
-  "homepage": "https://github.com/joomlatools/joomla-platform-tags",
+  "homepage": "https://github.com/joomlatools/joomla-platform-content",
   "authors": [
     {
       "name": "Timble",
