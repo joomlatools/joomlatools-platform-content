@@ -23,7 +23,7 @@
         </sql>
     </uninstall>
 
-	<files folder="site">
+    <files folder="../../../site/components/com_tags">
 		<filename>controller.php</filename>
 		<filename>metadata.xml</filename>
 		<filename>router.php</filename>
@@ -39,7 +39,7 @@
 
         <menu link="option=com_tags" img="class:tags">com_tags</menu>
 
-        <files folder="admin">
+        <files folder="../../../administrator/components/com_tags">
 			<filename>tags.php</filename>
 			<filename>config.xml</filename>
 			<filename>controller.php</filename>
