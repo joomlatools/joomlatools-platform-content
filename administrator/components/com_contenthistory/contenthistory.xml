@@ -11,9 +11,25 @@
     <version>1.0.0</version>
 	<description>COM_CONTENTHISTORY_XML_DESCRIPTION</description>
 
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">resources/install/install.mysql.sql</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">resources/install/uninstall.mysql.sql</file>
+        </sql>
+    </uninstall>
+
     <files folder="../../../site/components/com_contenthistory">
 		<filename>contenthistory.php</filename>
 	</files>
+
+    <media folder="../../../media">
+        <folder>com_contenthistory</folder>
+    </media>
 
 	<administration>
 
