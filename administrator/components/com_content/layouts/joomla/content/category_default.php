@@ -21,7 +21,6 @@ if (substr($className, -1) == 's')
 {
 	$className = rtrim($className, 's');
 }
-$tagsData  = $displayData->get('category')->tags->itemTags;
 ?>
 <div>
 	<div class="<?php echo $className .'-category' . $displayData->pageclass_sfx;?>">
