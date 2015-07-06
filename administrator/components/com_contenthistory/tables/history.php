@@ -63,7 +63,7 @@ class ContenthistoryTableHistory extends JTable
 	public function store($updateNulls = false)
 	{
 		$this->set('character_count', strlen($this->get('version_data')));
-		$typeTable = JTable::getInstance('Contenttype');
+		$typeTable = JTable::getInstance('Types', 'ContentTable');
 		$typeTable->load($this->ucm_type_id);
 
 		if (!isset($this->sha1_hash))
@@ -82,13 +82,13 @@ class ContenthistoryTableHistory extends JTable
 	 * modified date (which will change on every save).
 	 *
 	 * @param   mixed              $jsonData   Either an object or a string with json-encoded data
-	 * @param   JTableContenttype  $typeTable  Table object with data for this content type
+	 * @param   ContentTableTypes  $typeTable  Table object with data for this content type
 	 *
 	 * @return  string  SHA1 hash on sucess. Empty string on failure.
 	 *
 	 * @since   3.2
 	 */
-	public function getSha1($jsonData, JTableContenttype $typeTable)
+	public function getSha1($jsonData, ContentTableTypes $typeTable)
 	{
 		$object = (is_object($jsonData)) ? $jsonData : json_decode($jsonData);
 

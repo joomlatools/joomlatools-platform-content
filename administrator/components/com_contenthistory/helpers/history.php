@@ -52,7 +52,7 @@ class ContenthistoryHelperHistory extends JHelper
 	{
 		$key = $table->getKeyName();
 		$id = $table->$key;
-		$typeTable = JTable::getInstance('Contenttype', 'JTable');
+		$typeTable = JTable::getInstance('Types', 'ContentTable');
 		$typeId = $typeTable->getTypeId($this->typeAlias);
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
@@ -102,7 +102,7 @@ class ContenthistoryHelperHistory extends JHelper
 	{
 		$dataObject = $this->getDataObject($table);
 		$historyTable = JTable::getInstance('History', 'ContenthistoryTable');
-		$typeTable = JTable::getInstance('Contenttype', 'JTable');
+		$typeTable = JTable::getInstance('Types', 'ContentTable');
 		$typeTable->load(array('type_alias' => $this->typeAlias));
 		$historyTable->set('ucm_type_id', $typeTable->type_id);
 

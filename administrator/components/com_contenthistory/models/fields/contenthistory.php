@@ -35,7 +35,7 @@ class JFormFieldContenthistory extends JFormField
 	 */
 	protected function getInput()
 	{
-		$typeId = JTable::getInstance('Contenttype')->getTypeId($this->element['data-typeAlias']);
+		$typeId = JTable::getInstance('Types', 'ContentTable')->getTypeId($this->element['data-typeAlias']);
 		$itemId = $this->form->getValue('id');
 		$label = JText::_('JTOOLBAR_VERSIONS');
 		$html = array();

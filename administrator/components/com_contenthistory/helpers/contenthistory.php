@@ -80,7 +80,7 @@ class ContenthistoryHelper
 	 * We translate any we can find and return an array in the format object->name => label.
 	 *
 	 * @param   stdClass           $object      Standard class object in the format name->value.
-	 * @param   JTableContenttype  $typesTable  Table object with content history options.
+	 * @param   ContentTableTypes  $typesTable  Table object with content history options.
 	 *
 	 * @return  stdClass  Contains two associative arrays.
 	 *                    $formValues->labels in the format name => label (for example, 'id' => 'Article ID').
@@ -89,7 +89,7 @@ class ContenthistoryHelper
 	 *
 	 * @since   3.2
 	 */
-	public static function getFormValues($object, JTableContenttype $typesTable)
+	public static function getFormValues($object, ContentTableTypes $typesTable)
 	{
 		$labels = array();
 		$values = array();
@@ -139,13 +139,13 @@ class ContenthistoryHelper
 	/**
 	 * Method to get the XML form file for this component. Used to get translated field names for history preview.
 	 *
-	 * @param   JTableContenttype  $typesTable  Table object with content history options.
+	 * @param   ContentTableTypes  $typesTable  Table object with content history options.
 	 *
 	 * @return  mixed  JModel object if successful, false if no model found.
 	 *
 	 * @since   3.2
 	 */
-	public static function getFormFile(JTableContenttype $typesTable)
+	public static function getFormFile(ContentTableTypes $typesTable)
 	{
 		$result = false;
 		jimport('joomla.filesystem.file');
@@ -215,13 +215,13 @@ class ContenthistoryHelper
 	 * Method to remove fields from the object based on values entered in the #__content_types table.
 	 *
 	 * @param   stdClass           $object     Object to be passed to view layout file.
-	 * @param   JTableContenttype  $typeTable  Table object with content history options.
+	 * @param   ContentTableTypes  $typeTable  Table object with content history options.
 	 *
 	 * @return  stdClass  object with hidden fields removed.
 	 *
 	 * @since   3.2
 	 */
-	public static function hideFields($object, JTableContenttype $typeTable)
+	public static function hideFields($object, ContentTableTypes $typeTable)
 	{
 		if ($options = json_decode($typeTable->content_history_options))
 		{
@@ -324,7 +324,7 @@ class ContenthistoryHelper
 	public static function prepareData(ContenthistoryTableHistory $table)
 	{
 		$object = static::decodeFields($table->version_data);
-		$typesTable = JTable::getInstance('Contenttype');
+		$typesTable = JTable::getInstance('Types', 'ContentTable');
 		$typesTable->load(array('type_id' => $table->ucm_type_id));
 		$formValues = static::getFormValues($object, $typesTable);
 		$object = static::mergeLabels($object, $formValues);
@@ -339,13 +339,13 @@ class ContenthistoryHelper
 	 * This allows category title and user name to be displayed instead of the id column.
 	 *
 	 * @param   stdClass           $object      The std object from the JSON string. Can be nested 1 level deep.
-	 * @param   JTableContenttype  $typesTable  Table object loaded with data.
+	 * @param   ContentTableTypes  $typesTable  Table object loaded with data.
 	 *
 	 * @return  stdClass  Object with lookup values inserted.
 	 *
 	 * @since   3.2
 	 */
-	public static function processLookupFields($object, JTableContenttype $typesTable)
+	public static function processLookupFields($object, ContentTableTypes $typesTable)
 	{
 		if ($options = json_decode($typesTable->content_history_options))
 		{

@@ -13,11 +13,31 @@
     <description>Content extension for the Joomla Platform</description>
 
     <files>
-        <file type="component" id="com_contenthistory">administrator/components</file>
+        <file type="component" id="com_content">administrator/components</file>
+        <file type="module" id="mod_latest" client="administrator">administrator/modules</file>
+        <file type="module" id="mod_popular" client="administrator">administrator/modules</file>
+        <file type="module" id="mod_articles_archive" client="site">site/modules</file>
+        <file type="module" id="mod_articles_archive" client="site">site/modules</file>
+        <file type="module" id="mod_articles_categories" client="site">site/modules</file>
+        <file type="module" id="mod_articles_category" client="site">site/modules</file>
+        <file type="module" id="mod_articles_latest" client="site">site/modules</file>
+        <file type="module" id="mod_articles_news" client="site">site/modules</file>
+        <file type="plugin" id="content" group="finder">plugins/finder/content</file>
+        <file type="plugin" id="content" group="search">plugins/search/content</file>
+        <file type="plugin" id="pagebreak" group="content">plugins/content/pagebreak</file>
+        <file type="plugin" id="pagenavigation" group="content">plugins/content/pagenavigation</file>
+        <file type="plugin" id="ucm" group="content">plugins/content/ucm</file>
+        <file type="plugin" id="article" group="editor-xtd">plugins/editor-xtd/article</file>
+        <file type="plugin" id="pagebreak" group="editor-xtd">plugins/editor-xtd/pagebreak</file>
+
         <file type="component" id="com_tags">administrator/components</file>
         <file type="module" id="mod_tags_popular" client="site">site/modules</file>
         <file type="module" id="mod_tags_similar" client="site">site/modules</file>
         <file type="plugin" id="tags" group="finder">plugins/finder/tags</file>
         <file type="plugin" id="tags" group="search">plugins/search/tags</file>
+
+        <file type="component" id="com_contenthistory">administrator/components</file>
+
+        <file type="file"
     </files>
 </extension>

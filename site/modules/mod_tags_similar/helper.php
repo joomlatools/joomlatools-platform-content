@@ -77,7 +77,7 @@ abstract class ModTagssimilarHelper
 		$query->from($db->quoteName('#__content_tags_map', 'm'));
 
 		$query->join('INNER', $db->quoteName('#__content_tags', 't') . ' ON m.tag_id = t.id')
-			->join('INNER', $db->quoteName('#__ucm_content', 'cc') . ' ON m.core_content_id = cc.core_content_id')
+			->join('INNER', $db->quoteName('#__content_ucm_core', 'cc') . ' ON m.core_content_id = cc.core_content_id')
 			->join('INNER', $db->quoteName('#__content_types', 'ct') . ' ON m.type_alias = ct.type_alias');
 
 		$query->where($db->quoteName('m.tag_id') . ' IN (' . $tagsToMatch . ')');
