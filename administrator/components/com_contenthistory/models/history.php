@@ -59,7 +59,7 @@ class ContenthistoryModelHistory extends JModelList
 
 			// Check that the type id matches the type alias
 			$typeAlias = JFactory::getApplication()->input->get('type_alias');
-			$contentTypeTable = JTable::getInstance('Contenttype', 'JTable');
+			$contentTypeTable = JTable::getInstance('Types', 'ContentTable');
 
 			if ($contentTypeTable->getTypeId($typeAlias) == $record->ucm_type_id)
 			{
@@ -296,7 +296,7 @@ class ContenthistoryModelHistory extends JModelList
 	protected function getSha1Hash()
 	{
 		$result = false;
-		$typeTable = JTable::getInstance('Contenttype', 'JTable');
+		$typeTable = JTable::getInstance('Types', 'ContentTable');
 		$typeId = JFactory::getApplication()->input->getInteger('type_id', 0);
 		$typeTable->load($typeId);
 		$typeAliasArray = explode('.', $typeTable->type_alias);

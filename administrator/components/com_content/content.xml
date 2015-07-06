@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.0.0" method="upgrade">
+	<name>com_content</name>
+    <author>Joomlatools</author>
+	<creationDate>April 2006</creationDate>
+	<copyright>(C) 2005 - 2014 Open Source Matters. All rights reserved.	</copyright>
+    <copyright>Copyright (C) 2015 Timble CVBA (http://www.timble.net)</copyright>
+    <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>info@joomlatools.com</authorEmail>
+    <authorUrl>www.joomlatools.com</authorUrl>
+    <version>1.0.0</version>
+	<description>COM_CONTENT_XML_DESCRIPTION</description>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">resources/install/install.mysql.sql</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">resources/install/uninstall.mysql.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="../../../site/components/com_content">
+		<filename>content.php</filename>
+		<filename>controller.php</filename>
+        <filename>metadata.xml</filename>
+		<filename>router.php</filename>
+        <folder>controllers</folder>
+		<folder>helpers</folder>
+        <folder>language</folder>
+        <folder>layouts</folder>
+		<folder>models</folder>
+        <folder>views</folder>
+	</files>
+
+	<administration>
+
+        <menu link="option=com_content" img="class:content">com_content</menu>
+
+        <files folder="../../../administrator/components/com_content">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>content.php</filename>
+			<filename>controller.php</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+            <folder>language</folder>
+			<folder>models</folder>
+            <folder>resources</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+
+	</administration>
+</extension>
+
+

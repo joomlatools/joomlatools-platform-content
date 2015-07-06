@@ -262,9 +262,9 @@ class TagsHelperTags extends JHelperTags
 		$result = $this->unTagItem($contentItemId, $table);
 
 		/**
-		 * @var JTableCorecontent $ucmContentTable
+		 * @var ContentTableCore $ucmContentTable
 		 */
-		$ucmContentTable = JTable::getInstance('Corecontent');
+		$ucmContentTable = JTable::getInstance('Core', 'ContentTable');
 
 		return $result && $ucmContentTable->deleteByContentId($contentItemId, $this->typeAlias);
 	}
@@ -444,7 +444,7 @@ class TagsHelperTags extends JHelperTags
 			->select('MAX(ct.type_title) AS content_type_title, MAX(ct.router) AS router')
 
 			->from('#__content_tags_map AS m')
-			->join('INNER', '#__ucm_content AS c ON m.type_alias = c.core_type_alias AND m.core_content_id = c.core_content_id AND c.core_state IN (' . implode(',', $stateFilters) . ')' . (in_array('0', $stateFilters) ? '' : ' AND (c.core_publish_up = ' . $nullDate . ' OR c.core_publish_up <= ' . $nowDate . ') AND (c.core_publish_down = ' . $nullDate . ' OR  c.core_publish_down >= ' . $nowDate . ')'))
+			->join('INNER', '#__content_ucm_core AS c ON m.type_alias = c.core_type_alias AND m.core_content_id = c.core_content_id AND c.core_state IN (' . implode(',', $stateFilters) . ')' . (in_array('0', $stateFilters) ? '' : ' AND (c.core_publish_up = ' . $nullDate . ' OR c.core_publish_up <= ' . $nowDate . ') AND (c.core_publish_down = ' . $nullDate . ' OR  c.core_publish_down >= ' . $nowDate . ')'))
 			->join('INNER', '#__content_types AS ct ON ct.type_alias = m.type_alias')
 
 			// Join over the users for the author and email
@@ -585,11 +585,11 @@ class TagsHelperTags extends JHelperTags
 	 * @return  string  Name of the table for a type
 	 *
 	 * @since   3.1
-	 * @deprecated  4.0  Use JUcmType::getTypeId() instead
+	 * @deprecated  4.0  Use ContentTableUcmType::getTypeId() instead
 	 */
 	public function getTypeId($typeAlias)
 	{
-		$contentType = new JUcmType;
+		$contentType = new ContentTableUcmType;
 
 		return $contentType->getTypeId($typeAlias);
 	}
@@ -693,9 +693,9 @@ class TagsHelperTags extends JHelperTags
 			{
 				// Process the tags
 				$data = $this->getRowData($table);
-				$ucmContentTable = JTable::getInstance('Corecontent');
+				$ucmContentTable = JTable::getInstance('Core', 'ContentTable');
 
-				$ucm = new JUcmContent($table, $this->typeAlias);
+				$ucm = new ContentTableUcmContent($table, $this->typeAlias);
 				$ucmData = $data ? $ucm->mapData($data) : $ucm->ucmData;
 
 				$primaryId = $ucm->getPrimaryKey($ucmData['common']['core_type_id'], $ucmData['common']['core_content_item_id']);
