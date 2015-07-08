@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_content
  * @since       3.1
  */
-class ContentTableCategory extends JTableCategory
+class ContentTableCategories extends CategoriesTableCategories
 {
 
 }

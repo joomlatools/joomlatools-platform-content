@@ -136,7 +136,7 @@ class ContentModelFeatured extends ContentModelArticles
 
 		if (is_numeric($categoryId))
 		{
-			$cat_tbl = JTable::getInstance('Category', 'JTable');
+			$cat_tbl = JTable::getInstance('Categories', 'ContentTable');
 			$cat_tbl->load($categoryId);
 			$rgt = $cat_tbl->rgt;
 			$lft = $cat_tbl->lft;

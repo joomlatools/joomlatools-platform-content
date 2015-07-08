@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_content
  * @since       1.5
  */
-class ContentViewCategory extends JViewCategory
+class ContentViewCategory extends CategoriesViewCategory
 {
 	/**
 	 * @var    array  Array of leading items for blog display

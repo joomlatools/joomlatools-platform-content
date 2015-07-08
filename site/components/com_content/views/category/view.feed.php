@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_content
  * @since       1.5
  */
-class ContentViewCategory extends JViewCategoryfeed
+class ContentViewCategory extends CategoriesViewCategoryfeed
 {
 	/**
 	 * @var    string  The name of the view to link individual items to
