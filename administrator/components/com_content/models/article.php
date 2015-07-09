@@ -504,7 +504,7 @@ class ContentModelArticle extends JModelAdmin
 				// Deleting old association for these items
 				$db = JFactory::getDbo();
 				$query = $db->getQuery(true)
-					->delete('#__associations')
+					->delete('#__languages_associations')
 					->where('context=' . $db->quote('com_content.item'))
 					->where('id IN (' . implode(',', $associations) . ')');
 				$db->setQuery($query);
@@ -521,7 +521,7 @@ class ContentModelArticle extends JModelAdmin
 					// Adding new association for these items
 					$key = md5(json_encode($associations));
 					$query->clear()
-						->insert('#__associations');
+						->insert('#__languages_associations');
 
 					foreach ($associations as $id)
 					{
