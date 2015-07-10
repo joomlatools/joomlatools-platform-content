@@ -186,7 +186,7 @@ class ContentModelArticles extends JModelList
 
 		// Join over the asset groups.
 		$query->select('ag.title AS access_level')
-			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
+			->join('LEFT', '#__users_roles AS ag ON ag.id = a.access');
 
 		// Join over the categories.
 		$query->select('c.title AS category_title')
@@ -194,7 +194,7 @@ class ContentModelArticles extends JModelList
 
 		// Join over the users for the author.
 		$query->select('ua.name AS author_name')
-			->join('LEFT', '#__users AS ua ON ua.id = a.created_by');
+			->join('LEFT', '#__users_roles AS ua ON ua.id = a.created_by');
 
 		// Join over the associations.
 		if (JLanguageAssociations::isEnabled())
