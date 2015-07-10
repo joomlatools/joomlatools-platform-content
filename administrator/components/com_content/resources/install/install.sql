@@ -4,7 +4,7 @@
 -- Table structure for table `content`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content` (
+CREATE TABLE IF NOT EXISTS `content` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the assets table.',
   `title` varchar(255) NOT NULL DEFAULT '',
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `#__content` (
 -- Table structure for table `content_frontpage`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_frontpage` (
+CREATE TABLE IF NOT EXISTS `content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT 0,
   `ordering` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`content_id`)
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `#__content_frontpage` (
 -- Table structure for table `content_types`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_types` (
+CREATE TABLE IF NOT EXISTS `content_types` (
   `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_title` varchar(255) NOT NULL DEFAULT '',
   `type_alias` varchar(255) NOT NULL DEFAULT '',
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `#__content_types` (
 -- Table structure for table `content_ucm_base`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_ucm_base` (
+CREATE TABLE IF NOT EXISTS `content_ucm_base` (
   `ucm_id` int(10) unsigned NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
   `ucm_type_id` int(11) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `#__content_ucm_base` (
 -- Table structure for table `content_ucm_core`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_ucm_core` (
+CREATE TABLE IF NOT EXISTS `content_ucm_core` (
   `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `core_type_alias` varchar(255) NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
   `core_title` varchar(255) NOT NULL,
@@ -162,6 +162,5 @@ INSERT INTO `content_types` (`type_id`, `type_title`, `type_alias`, `table`, `ru
 -- Dumping data for table `categories`
 --
 
---INSERT INTO `#__categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`, `version`) VALUES
---(1, 0, 0, 0, 13, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '{}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
+--INSERT INTO `categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`, `version`) VALUES
 --(2, 27, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1);
