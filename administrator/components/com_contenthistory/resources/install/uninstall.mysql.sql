@@ -1,1 +1,0 @@
-DROP TABLE IF EXISTS `#__content_ucm_history`;
