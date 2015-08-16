@@ -38,6 +38,5 @@
         <file type="plugin" id="tags" group="search">plugins/search/tags</file>
 
         <file type="component" id="com_contenthistory">administrator/components</file>
-
     </files>
 </extension>
