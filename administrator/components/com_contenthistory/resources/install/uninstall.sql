@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS `content_ucm_history`;

@@ -14,13 +14,13 @@
 
     <install>
         <sql>
-            <file driver="mysql" charset="utf8">resources/install/install.mysql.sql</file>
+            <file driver="mysql" charset="utf8">resources/install/install.sql</file>
         </sql>
     </install>
 
     <uninstall>
         <sql>
-            <file driver="mysql" charset="utf8">resources/install/uninstall.mysql.sql</file>
+            <file driver="mysql" charset="utf8">resources/install/uninstall.sql</file>
         </sql>
     </uninstall>
 
@@ -33,6 +33,8 @@
     </media>
 
 	<administration>
+
+        <menu hidden="true" />
 
         <files folder="../../../administrator/components/com_contenthistory">
 			<filename>controller.php</filename>

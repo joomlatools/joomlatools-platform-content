@@ -234,7 +234,7 @@ class ContentModelArticle extends JModelAdmin
 	 *
 	 * @return  JTable    A database object
 	 */
-	public function getTable($type = 'Content', $prefix = 'JTable', $config = array())
+	public function getTable($type = 'Content', $prefix = 'ContentTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}

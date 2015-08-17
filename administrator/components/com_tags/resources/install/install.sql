@@ -4,7 +4,7 @@
 -- Table structure for table `tags`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_tags` (
+CREATE TABLE IF NOT EXISTS `content_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT 0,
   `lft` int(11) NOT NULL DEFAULT 0,
@@ -48,10 +48,10 @@ CREATE TABLE IF NOT EXISTS `#__content_tags` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tags_map`
+-- Table structure for table `content_tags_map`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_tags_map` (
+CREATE TABLE IF NOT EXISTS `content_tags_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `#__content_tags_map` (
 -- Dumping data for table `tags`
 --
 
-INSERT INTO `#__content_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `created_by_alias`, `modified_user_id`, `modified_time`, `images`, `urls`, `hits`, `language`, `version`) VALUES
+INSERT INTO `content_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `created_by_alias`, `modified_user_id`, `modified_time`, `images`, `urls`, `hits`, `language`, `version`) VALUES
 (1, 0, 0, 1, 0, '', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '', '', '', '', '', '2011-01-01 00:00:01', '', 0, '0000-00-00 00:00:00', '', '', 0, '*', 1);
 
 

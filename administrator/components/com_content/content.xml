@@ -14,13 +14,13 @@
 
     <install>
         <sql>
-            <file driver="mysql" charset="utf8">resources/install/install.mysql.sql</file>
+            <file driver="mysql" charset="utf8">resources/install/install.sql</file>
         </sql>
     </install>
 
     <uninstall>
         <sql>
-            <file driver="mysql" charset="utf8">resources/install/uninstall.mysql.sql</file>
+            <file driver="mysql" charset="utf8">resources/install/uninstall.sql</file>
         </sql>
     </uninstall>
 
@@ -32,7 +32,6 @@
         <folder>controllers</folder>
 		<folder>helpers</folder>
         <folder>language</folder>
-        <folder>layouts</folder>
 		<folder>models</folder>
         <folder>views</folder>
 	</files>
@@ -49,6 +48,7 @@
 			<folder>controllers</folder>
 			<folder>helpers</folder>
             <folder>language</folder>
+            <folder>layouts</folder>
 			<folder>models</folder>
             <folder>resources</folder>
 			<folder>tables</folder>
