@@ -9,6 +9,9 @@
 
 defined('_JEXEC') or die;
 
+JLoader::register('ContenthistoryHelper'        , __DIR__ . '/helpers/contenthistory.php');
+JLoader::register('ContenthistoryHelperHistory' , __DIR__ . '/helpers/history.php');
+
 $controller = JControllerLegacy::getInstance('Contenthistory', array('base_path' => JPATH_COMPONENT_ADMINISTRATOR));
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();
