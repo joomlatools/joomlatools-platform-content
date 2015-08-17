@@ -34,6 +34,8 @@
 
 	<administration>
 
+        <menu hidden="true" />
+
         <files folder="../../../administrator/components/com_contenthistory">
 			<filename>controller.php</filename>
 			<filename>contenthistory.php</filename>
