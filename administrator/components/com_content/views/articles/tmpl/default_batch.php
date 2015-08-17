@@ -9,6 +9,9 @@
 
 defined('_JEXEC') or die;
 
+JHtml::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_categories/helpers/html');
+JHtml::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_tags/helpers/html');
+
 $published = $this->state->get('filter.published');
 ?>
 <div class="modal hide fade" id="collapseModal">
