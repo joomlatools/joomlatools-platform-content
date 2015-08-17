@@ -29,11 +29,15 @@ class ContentTableContent extends JTable
 	{
 		parent::__construct('#__content', 'id', $db);
 
-        if(JComponentHelper::isEnabled('com_tags')) {
+        if(JComponentHelper::isEnabled('com_tags'))
+        {
+            JLoader::register('TagsTableObserverTags', JPATH_ADMINISTRATOR . '/components/com_tags/tables/observer/tags.php');
             TagsTableObserverTags::createObserver($this, array('typeAlias' => 'com_content.article'));
         }
 
-        if(JComponentHelper::isEnabled('com_contenthistory')) {
+        if(JComponentHelper::isEnabled('com_contenthistory'))
+        {
+            JLoader::register('ContenthistoryTableObserverHistory', JPATH_ADMINISTRATOR . '/components/com_contenthistory/tables/observer/history.php');
             ContenthistoryTableObserverHistory::createObserver($this, array('typeAlias' => 'com_content.article'));
         }
 	}
