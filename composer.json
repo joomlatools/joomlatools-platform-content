@@ -21,5 +21,8 @@
     "php": ">=5.5.0",
     "joomlatools/installer": "*",
     "joomlatools/joomla-platform-categories": "*"
+  },
+  "autoload": {
+    "files": ["autoload.php"]
   }
 }
