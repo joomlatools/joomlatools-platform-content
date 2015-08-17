@@ -40,3 +40,7 @@ JLoader::registerAlias('JUcmBase'   , 'ContentTableUcmBase');
 JLoader::registerAlias('JUcmContent', 'ContentTableUcmContent');
 JLoader::registerAlias('JUcmType'   , 'ContentTableUcmType');
 JLoader::registerAlias('JUcm'       , 'ContentTableUcm');
+
+JHtml::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_content/helpers/html');
+JHtml::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_contenthistory/helpers/html');
+JHtml::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_tags/helpers/html');
