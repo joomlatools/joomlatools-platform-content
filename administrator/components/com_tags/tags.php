@@ -17,6 +17,9 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_tags'))
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
+JLoader::register('TagsHelperContent', __DIR__ . '/helpers/content.php');
+JLoader::register('TagsHelperTags'   , __DIR__ . '/helpers/tags.php');
+
 $task = $input->get('task');
 
 $controller	= JControllerLegacy::getInstance('Tags');
