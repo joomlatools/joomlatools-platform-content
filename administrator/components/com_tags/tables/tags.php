@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_tags
  * @since       3.1
  */
-class TagsTableTag extends JTableNested
+class TagsTableTags extends JTableNested
 {
 	/**
 	 * Constructor
