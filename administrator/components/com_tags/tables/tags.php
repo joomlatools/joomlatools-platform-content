@@ -175,7 +175,7 @@ class TagsTableTags extends JTableNested
 		}
 
 		// Verify that the alias is unique
-		$table = JTable::getInstance('Tag', 'TagsTable');
+		$table = JTable::getInstance('Tags', 'TagsTable');
 		if ($table->load(array('alias' => $this->alias)) && ($table->id != $this->id || $this->id == 0))
 		{
 			$this->setError(JText::_('COM_TAGS_ERROR_UNIQUE_ALIAS'));

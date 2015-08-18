@@ -188,7 +188,7 @@ class JHelperTags extends JHelper
 		{
 			// We will use the tags table to store them
 			JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_tags/tables');
-			$tagTable = JTable::getInstance('Tag', 'TagsTable');
+			$tagTable = JTable::getInstance('Tags', 'TagsTable');
 			$newTags = array();
 
 			foreach ($tags as $key => $tag)
@@ -554,7 +554,7 @@ class JHelperTags extends JHelper
 	public function getTagTreeArray($id, &$tagTreeArray = array())
 	{
 		// Get a level row instance.
-		$table = JTable::getInstance('Tag', 'TagsTable');
+		$table = JTable::getInstance('Tags', 'TagsTable');
 
 		if ($table->isLeaf($id))
 		{
@@ -806,7 +806,7 @@ class JHelperTags extends JHelper
 		if (!empty($filters['parent_id']))
 		{
 			JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_tags/tables');
-			$tagTable = JTable::getInstance('Tag', 'TagsTable');
+			$tagTable = JTable::getInstance('Tags', 'TagsTable');
 
 			if ($children = $tagTable->getTree($filters['parent_id']))
 			{
