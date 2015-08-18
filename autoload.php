@@ -7,10 +7,11 @@
  * @link		https://github.com/joomlatools/joomla-platform for the canonical source repository
  */
 
-JLoader::register('TagsHelperTag'          , JPATH_ADMINISTRATOR . '/components/com_tags/helpers/tags.php');
-JLoader::register('TagsTableObserverTags'  , JPATH_ADMINISTRATOR . '/components/com_tags/tables/observer/history.php');
+//Provide a specialised version of JHelperTags found in /lib/libraries/cms/helper/tags.php
+JLoader::register('JHelperTags'            , JPATH_ADMINISTRATOR . '/components/com_tags/helpers/tags.php');
+JLoader::registerAlias('TagsHelperTags'    , 'JHelperTags');
 
-JLoader::registerAlias('JHelperTags'       , 'TagsHelperTag');
+JLoader::register('TagsTableObserverTags'  , JPATH_ADMINISTRATOR . '/components/com_tags/tables/observer/history.php');
 JLoader::registerAlias('JTableObserverTags', 'TagsTableObserverTags');
 
 JLoader::register('ContenthistoryHelperHistory'       , JPATH_ADMINISTRATOR . '/components/com_contenthistory/helpers/history.php');

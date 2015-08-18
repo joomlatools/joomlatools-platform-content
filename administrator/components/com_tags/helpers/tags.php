@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
  * @subpackage  Helper
  * @since       3.1
  */
-class TagsHelperTags extends JHelperTags
+class JHelperTags extends JHelper
 {
 	/**
 	 * Helper object for storing and deleting tag information.
