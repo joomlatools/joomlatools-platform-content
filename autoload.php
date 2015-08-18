@@ -22,7 +22,10 @@ JLoader::registerAlias('JTableObserverContenthistory' , 'ContenthistoryTableObse
 
 JLoader::register('JFormFieldTag'           , JPATH_ADMINISTRATOR . '/components/com_tags/models/fields/tag.php');
 JLoader::register('JFormFieldContenthistory', JPATH_ADMINISTRATOR . '/components/com_contenthistory/models/fields/history.php');
+
 JLoader::register('JFormFieldContenttype'   , JPATH_ADMINISTRATOR . '/components/com_content/models/fields/contenttype.php');
+JLoader::register('JFormFieldOrdering'      , JPATH_ADMINISTRATOR . '/components/com_content/models/fields/ordering.php');
+JLoader::register('JFormFieldModal_Article' , JPATH_ADMINISTRATOR . '/components/com_content/models/fields/modal/article.php');
 
 JLoader::register('ContentTableContent'    , JPATH_ADMINISTRATOR . '/components/com_content/tables/content.php');
 JLoader::register('ContentTableCore'       , JPATH_ADMINISTRATOR . '/components/com_content/tables/core.php');
