@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  com_content
  * @since       1.5
  */
-class ContentViewCategories extends CategoryViewCategories
+class ContentViewCategories extends CategoriesViewCategories
 {
 	/**
 	 * Language key for default page heading
