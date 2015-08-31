@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="content">
+	<name>plg_content_ucm</name>
+    <author>Joomlatools</author>
+	<creationDate>November 2010</creationDate>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <copyright>Copyright (C) 2015 Timble CVBA (http://www.timble.net)</copyright>
+    <copyright>Copyright (C) 2015 Johan Janssens</copyright>
+    <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>info@joomlatools.com</authorEmail>
+    <authorUrl>www.joomlatools.com</authorUrl>
+    <version>1.0.0</version>
+	<description>PLG_CONTENT_UCM_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="ucm">ucm.php</filename>
+        <folder>language</folder>
+	</files>
+
+</extension>

@@ -7,6 +7,11 @@
   "homepage": "https://github.com/joomlatools/joomla-platform-content",
   "authors": [
     {
+      "name": "Johan Janssens",
+      "email": "johan@janssens.me",
+      "homepage": "http://about.me/johanjanssens"
+    },
+    {
       "name": "Timble",
       "email": "info@timble.net",
       "homepage": "http://www.timble.net"
@@ -14,6 +19,10 @@
   ],
   "require": {
     "php": ">=5.5.0",
-    "joomlatools/installer": "*"
+    "joomlatools/installer": "*",
+    "joomlatools/joomla-platform-categories": "*"
+  },
+  "autoload": {
+    "files": ["autoload.php"]
   }
 }

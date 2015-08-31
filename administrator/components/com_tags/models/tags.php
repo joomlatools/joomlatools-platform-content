@@ -151,7 +151,7 @@ class TagsModelTags extends JModelList
 			->join('LEFT', '#__users AS ua ON ua.id = a.created_user_id')
 
 			->select('ug.title AS access_title')
-			->join('LEFT', '#__viewlevels AS ug on ug.id = a.access');
+			->join('LEFT', '#__users_roles AS ug on ug.id = a.access');
 
 		// Filter on the level.
 		if ($level = $this->getState('filter.level'))
@@ -306,7 +306,7 @@ class TagsModelTags extends JModelList
 	 *
 	 * @since   3.1
 	 */
-	public function getTable($type = 'Tag', $prefix = 'TagsTable', $config = array())
+	public function getTable($type = 'Tags', $prefix = 'TagsTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}

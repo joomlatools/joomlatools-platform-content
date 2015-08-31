@@ -76,7 +76,7 @@ class TagsModelTag extends JModelAdmin
 	 *
 	 * @since   3.1
 	*/
-	public function getTable($type = 'Tag', $prefix = 'TagsTable', $config = array())
+	public function getTable($type = 'Tags', $prefix = 'TagsTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}

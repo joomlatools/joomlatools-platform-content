@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.0.0" method="upgrade">
+	<name>com_contenthistory</name>
+    <author>Joomlatools</author>
+	<creationDate>May 2013</creationDate>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <copyright>Copyright (C) 2015 Timble CVBA (http://www.timble.net)</copyright>
+    <copyright>Copyright (C) 2015 Johan Janssens</copyright>
+    <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>info@joomlatools.com</authorEmail>
+    <authorUrl>www.joomlatools.com</authorUrl>
+    <version>1.0.0</version>
+	<description>COM_CONTENTHISTORY_XML_DESCRIPTION</description>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">resources/install/install.sql</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">resources/install/uninstall.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="../../../site/components/com_contenthistory">
+		<filename>contenthistory.php</filename>
+        <folder>layouts</folder>
+	</files>
+
+    <media folder="../../../media">
+        <folder>com_contenthistory</folder>
+    </media>
+
+	<administration>
+
+        <menu hidden="true" />
+
+        <files folder="../../../administrator/components/com_contenthistory">
+			<filename>controller.php</filename>
+			<filename>contenthistory.php</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+            <folder>language</folder>
+			<folder>models</folder>
+            <folder>resources</folder>
+            <folder>tables</folder>
+			<folder>views</folder>
+		</files>
+
+    </administration>
+</extension>
+

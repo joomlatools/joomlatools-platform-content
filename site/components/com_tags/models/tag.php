@@ -273,7 +273,7 @@ class TagsModelTag extends JModelList
 			}
 
 			// Get a level row instance.
-			$table = JTable::getInstance('Tag', 'TagsTable');
+			$table = JTable::getInstance('Tags', 'TagsTable');
 
 			$idsArray = explode(',', $id);
 			// Attempt to load the rows into an array.
@@ -324,7 +324,7 @@ class TagsModelTag extends JModelList
 		if ($hitcount)
 		{
 			$pk    = (!empty($pk)) ? $pk : (int) $this->getState('tag.id');
-			$table = JTable::getInstance('Tag', 'TagsTable');
+			$table = JTable::getInstance('Tags', 'TagsTable');
 			$table->load($pk);
 			$table->hit($pk);
 		}
