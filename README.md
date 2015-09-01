@@ -4,6 +4,8 @@
 
 Joomla Content is an article management extension for the [Joomlatools Platform] supporting content tagging and versioning.
 
+> Forked from [Joomla CMS v3.3.6](https://github.com/joomla/joomla-cms/releases/tag/3.3.6)
+
 ## Requirements
 
 - PHP 5.5 or newer
