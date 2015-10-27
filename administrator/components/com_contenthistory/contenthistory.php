@@ -12,6 +12,11 @@ defined('_JEXEC') or die;
 JLoader::register('ContenthistoryHelper'        , __DIR__ . '/helpers/contenthistory.php');
 JLoader::register('ContenthistoryHelperHistory' , __DIR__ . '/helpers/history.php');
 
+// Disallow unauthenticated users
+if (JFactory::getUser()->guest) {
+    return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
 $controller = JControllerLegacy::getInstance('Contenthistory', array('base_path' => JPATH_COMPONENT_ADMINISTRATOR));
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();
