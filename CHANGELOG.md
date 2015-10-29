@@ -10,4 +10,4 @@ change hash. To view the diff between two versions, go to https://github.com/joo
  * Added - Initial release
  
 * 1.0.1 (2015-09-27)
-  * Backport security fixes from v3.4.5 
+  * Security - Backport security fixes from v3.4.5 
