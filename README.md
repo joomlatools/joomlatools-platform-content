@@ -33,8 +33,9 @@ Joomla Content is open-source software licensed under the [GPLv3 license](LICENS
 
 Keep track of development and community news.
 
-* Follow [@joomlatools on Twitter](https://twitter.com/joomlatools)
-* Read and subscribe to the [Joomlatools Blog](https://joomlatools.com/blog/)
+* Follow [@joomlatoolsdev on Twitter](https://twitter.com/joomlatoolsdev)
+* Join [joomlatools/dev on Gitter](http://gitter.im/joomlatools/dev)
+* Read and subscribe to the [Joomlatools Developer Blog](https://develeoper.joomlatools.com/blog/)
 * Subscribe to the [Joomlatools Newsletter](http://www.joomlatools.com/newsletter)
 
 [Joomlatools Platform]: https://developer.joomlatools.com/platform
