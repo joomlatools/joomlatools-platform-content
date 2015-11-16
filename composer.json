@@ -20,7 +20,8 @@
   "require": {
     "php": ">=5.5.0",
     "joomlatools/installer": "*",
-    "joomlatools/joomla-platform-categories": "*"
+    "joomlatools/joomla-platform-categories": "*",
+    "joomlatools/joomla-platform-legacy": "^1.0.0"
   },
   "autoload": {
     "files": ["autoload.php"]
