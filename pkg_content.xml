@@ -11,7 +11,7 @@
     <authorEmail>support@joomlatools.com</authorEmail>
     <authorUrl>www.joomlatools.com</authorUrl>
     <version>1.0.0</version>
-    <description>Content extension for the Joomla Platform</description>
+    <description>Content extension for the Joomlatools Platform</description>
 
     <files>
         <file type="component" id="com_content">administrator/components/com_content</file>

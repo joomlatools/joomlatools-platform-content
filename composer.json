@@ -1,10 +1,10 @@
 {
-  "name": "joomlatools/joomla-platform-content",
-  "type": "joomla-installer",
+  "name": "joomlatools/platform-content",
+  "type": "joomlatools-composer",
   "license": "GPLv3",
   "description": "Content extension for the Joomlatools Platform",
   "keywords": ["joomla", "extension", "platform"],
-  "homepage": "https://github.com/joomlatools/joomla-platform-content",
+  "homepage": "https://github.com/joomlatools/joomlatools-platform-content",
   "authors": [
     {
       "name": "Johan Janssens",
@@ -19,9 +19,9 @@
   ],
   "require": {
     "php": ">=5.5.0",
-    "joomlatools/installer": "*",
-    "joomlatools/joomla-platform-categories": "*",
-    "joomlatools/joomla-platform-legacy": "^1.0.0"
+    "joomlatools/composer": "*",
+    "joomlatools/platform-categories": "*",
+    "joomlatools/platform-legacy": "^1.0.0"
   },
   "autoload": {
     "files": ["autoload.php"]
