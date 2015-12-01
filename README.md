@@ -18,7 +18,7 @@ Joomla Content can and should be installed by using [Composer](https://getcompos
 Go to the root directory of your Joomla Platform installation using the command line and execute following command:
 
 ```
-composer require joomlatools/joomla-platform-content:1.*
+composer require joomlatools/platform-content:1.*
 ```
 
 ## Contributing
