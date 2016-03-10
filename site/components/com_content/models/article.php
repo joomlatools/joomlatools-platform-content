@@ -117,7 +117,9 @@ class ContentModelArticle extends JModelItem
 
 				// Join over the categories to get parent category titles
 				$query->select('parent.title as parent_title, parent.id as parent_id, parent.path as parent_route, parent.alias as parent_alias')
-					->join('LEFT', '#__categories as parent ON parent.id = c.parent_id');
+					->join('LEFT', '#__categories as parent ON parent.id = c.parent_id')
+
+					->where('a.id = ' . (int) $pk);
 
 				if ((!$user->authorise('core.edit.state', 'com_content')) && (!$user->authorise('core.edit', 'com_content'))) {
 					// Filter by start and end dates.
