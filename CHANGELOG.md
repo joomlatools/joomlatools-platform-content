@@ -6,6 +6,9 @@ This changelog references the relevant changes (bug and security fixes) done in 
 To get the diff for a specific change, go to https://github.com/joomlatools/joomlatools-platform-content/commit/xxx where xxx is the
 change hash. To view the diff between two versions, go to https://github.com/joomlatools/joomlatools-platform-content/compare/v1.0.0...v1.0.1
 
+* 1.0.5 (2016-04-14)
+ * Fixed - Added the missing query for article ID [#28](https://github.com/joomlatools/joomlatools-platform-content/issues/28)
+
 * 1.0.4 (2016-03-09)
  * Fixed - Port security fixes from Joomla v3.4.6 - v3.4.8 [#24](https://github.com/joomlatools/joomlatools-platform-content/issues/24)
 
