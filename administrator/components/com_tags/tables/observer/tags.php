@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_tags
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Tags Table Observer
  *
- * @package     Joomla.Administrator
- * @subpackage  com_tags
- * @since       3.1.2
+ * @since  3.1.2
  */
 class TagsTableObserverTags extends JTableObserver
 {
@@ -87,6 +85,7 @@ class TagsTableObserverTags extends JTableObserver
     public function onBeforeStore($updateNulls, $tableKey)
     {
         $this->parseTypeAlias();
+
         if (empty($this->table->tagsHelper->tags))
         {
             $this->tagsHelper->preStoreProcess($this->table);

@@ -3,7 +3,7 @@
  * @package     Joomla.Libraries
  * @subpackage  UCM
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Base class for implementing UCM
  *
- * @package     Joomla.Libraries
- * @subpackage  UCM
- * @since       3.1
+ * @since  3.1
  */
 class ContentTableUcmBase implements ContentTableUcm
 {
@@ -84,7 +82,7 @@ class ContentTableUcmBase implements ContentTableUcm
 		}
 		catch (RuntimeException $e)
 		{
-			throw new Exception($e->getMessage(), 500);
+			throw new Exception($e->getMessage(), 500, $e);
 		}
 
 		try
@@ -93,7 +91,7 @@ class ContentTableUcmBase implements ContentTableUcm
 		}
 		catch (RuntimeException $e)
 		{
-			throw new Exception($e->getMessage(), 500);
+			throw new Exception($e->getMessage(), 500, $e);
 		}
 
 		return true;
@@ -102,15 +100,18 @@ class ContentTableUcmBase implements ContentTableUcm
 	/**
 	 * Get the UCM Content type.
 	 *
-	 * @return  object  The UCM content type
+	 * @return  ContentTableUcmType  The UCM content type
 	 *
 	 * @since   3.1
 	 */
 	public function getType()
 	{
-		$type = new ContentTableUcmType($this->alias);
+		if (!$this->type)
+		{
+			$this->type = new ContentTableUcmType($this->alias);
+		}
 
-		return $type;
+		return $this->type;
 	}
 
 	/**
@@ -130,7 +131,7 @@ class ContentTableUcmBase implements ContentTableUcm
 		$data = array(
 			'ucm_type_id' => $type->id,
 			'ucm_item_id' => $original[$type->primary_key],
-			'ucm_language_id' => JHelperContent::getLanguageId($original['language'])
+			'ucm_language_id' => JHelperContent::getLanguageId($original['language']),
 		);
 
 		return $data;

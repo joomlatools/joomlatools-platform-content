@@ -4,18 +4,19 @@
  * @package     Joomla.Administrator
  * @subpackage  com_content
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
+use Joomla\Registry\Registry;
+use Joomla\Utilities\ArrayHelper;
+
 /**
  * Core Content Table
  *
- * @package     Joomla.Administrator
- * @subpackage  com_content
- * @since       3.1
+ * @since  3.1
  */
 class ContentTableCore extends JTable
 {
@@ -47,35 +48,35 @@ class ContentTableCore extends JTable
 	{
 		if (isset($array['core_params']) && is_array($array['core_params']))
 		{
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadArray($array['core_params']);
 			$array['core_params'] = (string) $registry;
 		}
 
 		if (isset($array['core_metadata']) && is_array($array['core_metadata']))
 		{
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadArray($array['core_metadata']);
 			$array['core_metadata'] = (string) $registry;
 		}
 
 		if (isset($array['core_images']) && is_array($array['core_images']))
 		{
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadArray($array['core_images']);
 			$array['core_images'] = (string) $registry;
 		}
 
 		if (isset($array['core_urls']) && is_array($array['core_urls']))
 		{
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadArray($array['core_urls']);
 			$array['core_urls'] = (string) $registry;
 		}
 
 		if (isset($array['core_body']) && is_array($array['core_body']))
 		{
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadArray($array['core_body']);
 			$array['core_body'] = (string) $registry;
 		}
@@ -95,7 +96,7 @@ class ContentTableCore extends JTable
 	{
 		if (trim($this->core_title) == '')
 		{
-			$this->setError(JText::_('LIB_CMS_WARNING_PROVIDE_VALID_NAME'));
+			$this->setError(JText::_('JLIB_CMS_WARNING_PROVIDE_VALID_NAME'));
 
 			return false;
 		}
@@ -105,13 +106,21 @@ class ContentTableCore extends JTable
 			$this->core_alias = $this->core_title;
 		}
 
-		$this->core_alias = JApplication::stringURLSafe($this->core_alias);
+		$this->core_alias = JApplicationHelper::stringURLSafe($this->core_alias);
 
 		if (trim(str_replace('-', '', $this->core_alias)) == '')
 		{
 			$this->core_alias = JFactory::getDate()->format('Y-m-d-H-i-s');
 		}
-
+		// Not Null sanity check
+		if (empty($this->core_images))
+		{
+			$this->core_images = '{}';
+		}
+		if (empty($this->core_urls))
+		{
+			$this->core_urls = '{}';
+		}
 		// Check the publish down date is not earlier than publish up.
 		if ($this->core_publish_down > $this->_db->getNullDate() && $this->core_publish_down < $this->core_publish_up)
 		{
@@ -187,6 +196,7 @@ class ContentTableCore extends JTable
 		{
 			throw new UnexpectedValueException('Null content item key not allowed.');
 		}
+
 		if ($typeAlias === null)
 		{
 			throw new UnexpectedValueException('Null type alias not allowed.');
@@ -277,6 +287,12 @@ class ContentTableCore extends JTable
 		$query = $db->getQuery(true);
 		$languageId = JHelperContent::getLanguageId($this->core_language);
 
+		// Selecting "all languages" doesn't give a language id - we can't store a blank string in non mysql databases, so save 0 (the default value)
+		if (!$languageId)
+		{
+			$languageId = '0';
+		}
+
 		if ($isNew)
 		{
 			$query->insert($db->quoteName('#__content_ucm_base'))
@@ -320,7 +336,7 @@ class ContentTableCore extends JTable
 		$k = $this->_tbl_key;
 
 		// Sanitize input.
-		JArrayHelper::toInteger($pks);
+		$pks = ArrayHelper::toInteger($pks);
 		$userId = (int) $userId;
 		$state = (int) $state;
 
@@ -356,7 +372,11 @@ class ContentTableCore extends JTable
 		if (property_exists($this, 'core_checked_out_user_id') && property_exists($this, 'core_checked_out_time'))
 		{
 			$checkin = true;
-			$query->where(' (' . $this->_db->quoteName('core_checked_out_user_id') . ' = 0 OR ' . $this->_db->quoteName('core_checked_out_user_id') . ' = ' . (int) $userId . ')');
+			$query->where(
+				' ('
+				. $this->_db->quoteName('core_checked_out_user_id') . ' = 0 OR ' . $this->_db->quoteName('core_checked_out_user_id') . ' = ' . (int) $userId
+				. ')'
+			);
 		}
 
 		$this->_db->setQuery($query);

@@ -3,7 +3,7 @@
  * @package     Joomla.Libraries
  * @subpackage  UCM
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Base class for implementing UCM
  *
- * @package     Joomla.Libraries
- * @subpackage  UCM
- * @since       3.1
+ * @since  3.1
  */
 class ContentTableUcmContent extends ContentTableUcmBase
 {
@@ -45,11 +43,7 @@ class ContentTableUcmContent extends ContentTableUcmBase
 	 */
 	public function __construct(JTableInterface $table = null, $alias = null, ContentTableUcmType $type = null)
 	{
-		// Setup dependencies.
-		$input = JFactory::getApplication()->input;
-		$this->alias = isset($alias) ? $alias : $input->get('option') . '.' . $input->get('view');
-
-		$this->type = isset($type) ? $type : $this->getType();
+		parent::__construct($alias, $type);
 
 		if ($table)
 		{
@@ -127,7 +121,7 @@ class ContentTableUcmContent extends ContentTableUcmBase
 	 * @param   array     $original  The original data array
 	 * @param   ContentTableUcmType  $type      Type object for this data
 	 *
-	 * @return  object  $ucmData  The mapped UCM data
+	 * @return  array  $ucmData  The mapped UCM data
 	 *
 	 * @since   3.1
 	 */
@@ -229,7 +223,7 @@ class ContentTableUcmContent extends ContentTableUcmBase
 			->where(
 				array(
 					$db->quoteName('ucm_item_id') . ' = ' . $db->quote($contentItemId),
-					$db->quoteName('ucm_type_id') . ' = ' . $db->quote($typeId)
+					$db->quoteName('ucm_type_id') . ' = ' . $db->quote($typeId),
 				)
 			);
 		$db->setQuery($queryccid);
