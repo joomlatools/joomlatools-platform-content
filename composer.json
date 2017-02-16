@@ -19,21 +19,9 @@
   ],
   "require": {
     "php": ">=5.5.0",
-    "joomlatools/composer": "*",
-    "joomlatools/platform-categories": "dev-feature/19-joomla-3.6.5-upgrade",
-    "joomlatools/platform-legacy": "dev-feature/17-joomla-3.6.5-upgrade"
+    "joomlatools/composer": "*"
   },
   "autoload": {
     "files": ["autoload.php"]
-  },
-  "repositories": [
-    {
-        "type": "vcs",
-        "url": "git@github.com:joomlatools/joomlatools-platform-categories.git"
-    },
-    {
-        "type": "vcs",
-        "url": "git@github.com:joomlatools/joomlatools-platform-legacy.git"
-    }
-  ]
+  }
 }
