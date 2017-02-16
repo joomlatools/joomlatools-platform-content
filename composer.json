@@ -19,9 +19,7 @@
   ],
   "require": {
     "php": ">=5.5.0",
-    "joomlatools/composer": "*",
-    "joomlatools/platform-categories": "dev-feature/19-joomla-3.6.5-upgrade@dev",
-    "joomlatools/platform-legacy": "dev-feature/17-joomla-3.6.5-upgrade@dev"
+    "joomlatools/composer": "*"
   },
   "autoload": {
     "files": ["autoload.php"]
