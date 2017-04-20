@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS `content_tags` (
   `lft` int(11) NOT NULL DEFAULT 0,
   `rgt` int(11) NOT NULL DEFAULT 0,
   `level` int(10) unsigned NOT NULL DEFAULT 0,
-  `path` varchar(255) NOT NULL DEFAULT '',
+  `path` varchar(400) NOT NULL DEFAULT '',
   `title` varchar(255) NOT NULL,
-  `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `note` varchar(255) NOT NULL DEFAULT '',
   `description` mediumtext NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT 0,
@@ -39,11 +39,11 @@ CREATE TABLE IF NOT EXISTS `content_tags` (
   KEY `tag_idx` (`published`,`access`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`),
-  KEY `idx_path` (`path`),
+  KEY `idx_path` (`path`(100)),
   KEY `idx_left_right` (`lft`,`rgt`),
-  KEY `idx_alias` (`alias`),
+  KEY `idx_alias` (`alias`(100)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -61,10 +61,8 @@ CREATE TABLE IF NOT EXISTS `content_tags_map` (
   UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`),
   KEY `idx_tag_type` (`tag_id`,`type_id`),
   KEY `idx_date_id` (`tag_date`,`tag_id`),
-  KEY `idx_tag` (`tag_id`),
-  KEY `idx_type` (`type_id`),
   KEY `idx_core_content_id` (`core_content_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps items from content tables to tags';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci COMMENT='Maps items from content tables to tags';
 
 -- --------------------------------------------------------
 

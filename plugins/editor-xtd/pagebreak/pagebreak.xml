@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="1.0.0" type="plugin" group="editors-xtd">
+<extension version="1.0.0" type="plugin" group="editors-xtd" method="upgrade">
 	<name>plg_editors-xtd_pagebreak</name>
     <author>Joomlatools</author>
 	<creationDate>August 2004</creationDate>
-	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
     <copyright>Copyright (C) 2015 Timble CVBA (http://www.timble.net)</copyright>
     <copyright>Copyright (C) 2015 Johan Janssens</copyright>
     <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>

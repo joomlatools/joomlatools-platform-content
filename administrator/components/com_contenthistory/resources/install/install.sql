@@ -18,4 +18,4 @@ CREATE TABLE IF NOT EXISTS `content_ucm_history` (
   PRIMARY KEY (`version_id`),
   KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`),
   KEY `idx_save_date` (`save_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;

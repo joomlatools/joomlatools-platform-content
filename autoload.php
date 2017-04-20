@@ -7,6 +7,10 @@
  * @link		https://github.com/joomlatools/joomlatools-platform for the canonical source repository
  */
 
+if (!defined('JOOMLATOOLS_PLATFORM')) {
+	return;
+}
+
 //Provide a specialised version of JHelperTags found in /lib/libraries/cms/helper/tags.php
 JLoader::register('JHelperTags'            , JPATH_ADMINISTRATOR . '/components/com_tags/helpers/tags.php');
 JLoader::registerAlias('TagsHelperTags'    , 'JHelperTags');

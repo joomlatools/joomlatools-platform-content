@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  com_tags
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * HTML View class for the Tags component all tags view
  *
- * @package     Joomla.Site
- * @subpackage  com_tags
- * @since       3.1
+ * @since  3.1
  */
 class TagsViewTags extends JViewLegacy
 {
@@ -23,7 +21,7 @@ class TagsViewTags extends JViewLegacy
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
-	 * @return  mixed  A string if successful, otherwise a Error object.
+	 * @return  mixed  A string if successful, otherwise an Error object.
 	 */
 	public function display($tpl = null)
 	{
@@ -34,7 +32,7 @@ class TagsViewTags extends JViewLegacy
 		$app->input->set('limit', $app->get('feed_limit'));
 		$siteEmail        = $app->get('mailfrom');
 		$fromName         = $app->get('fromname');
-		$feedEmail        = $app->get('feed_email', 'author');
+		$feedEmail        = $app->get('feed_email', 'none');
 		$document->editor = $fromName;
 
 		if ($feedEmail != "none")
@@ -77,6 +75,5 @@ class TagsViewTags extends JViewLegacy
 			// Loads item info into RSS array
 			$document->addItem($feeditem);
 		}
-
 	}
 }

@@ -3,20 +3,16 @@
  * @package     Joomla.Plugin
  * @subpackage  Search.content
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_SITE . '/components/com_content/router.php';
-
 /**
  * Content search plugin.
  *
- * @package     Joomla.Plugin
- * @subpackage  Search.content
- * @since       1.6
+ * @since  1.6
  */
 class PlgSearchContent extends JPlugin
 {
@@ -52,14 +48,14 @@ class PlgSearchContent extends JPlugin
 	 */
 	public function onContentSearch($text, $phrase = '', $ordering = '', $areas = null)
 	{
-		$db = JFactory::getDbo();
-		$app = JFactory::getApplication();
-		$user = JFactory::getUser();
+		$db     = JFactory::getDbo();
+		$app    = JFactory::getApplication();
+		$user   = JFactory::getUser();
 		$groups = implode(',', $user->getAuthorisedViewLevels());
-		$tag = JFactory::getLanguage()->getTag();
+		$tag    = JFactory::getLanguage()->getTag();
 
-		require_once JPATH_SITE . '/components/com_content/helpers/route.php';
-		require_once JPATH_ADMINISTRATOR . '/components/com_search/helpers/search.php';
+		JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');
+		JLoader::register('SearchHelper', JPATH_ADMINISTRATOR . '/components/com_search/helpers/search.php');
 
 		$searchText = $text;
 
@@ -71,13 +67,13 @@ class PlgSearchContent extends JPlugin
 			}
 		}
 
-		$sContent = $this->params->get('search_content', 1);
+		$sContent  = $this->params->get('search_content', 1);
 		$sArchived = $this->params->get('search_archived', 1);
-		$limit = $this->params->def('search_limit', 50);
+		$limit     = $this->params->def('search_limit', 50);
 
-		$nullDate = $db->getNullDate();
-		$date = JFactory::getDate();
-		$now = $date->toSql();
+		$nullDate  = $db->getNullDate();
+		$date      = JFactory::getDate();
+		$now       = $date->toSql();
 
 		$text = trim($text);
 
@@ -89,14 +85,14 @@ class PlgSearchContent extends JPlugin
 		switch ($phrase)
 		{
 			case 'exact':
-				$text = $db->quote('%' . $db->escape($text, true) . '%', false);
-				$wheres2 = array();
+				$text      = $db->quote('%' . $db->escape($text, true) . '%', false);
+				$wheres2   = array();
 				$wheres2[] = 'a.title LIKE ' . $text;
 				$wheres2[] = 'a.introtext LIKE ' . $text;
 				$wheres2[] = 'a.fulltext LIKE ' . $text;
 				$wheres2[] = 'a.metakey LIKE ' . $text;
 				$wheres2[] = 'a.metadesc LIKE ' . $text;
-				$where = '(' . implode(') OR (', $wheres2) . ')';
+				$where     = '(' . implode(') OR (', $wheres2) . ')';
 				break;
 
 			case 'all':
@@ -107,14 +103,14 @@ class PlgSearchContent extends JPlugin
 
 				foreach ($words as $word)
 				{
-					$word = $db->quote('%' . $db->escape($word, true) . '%', false);
-					$wheres2 = array();
-					$wheres2[] = 'a.title LIKE ' . $word;
-					$wheres2[] = 'a.introtext LIKE ' . $word;
-					$wheres2[] = 'a.fulltext LIKE ' . $word;
-					$wheres2[] = 'a.metakey LIKE ' . $word;
-					$wheres2[] = 'a.metadesc LIKE ' . $word;
-					$wheres[] = implode(' OR ', $wheres2);
+					$word      = $db->quote('%' . $db->escape($word, true) . '%', false);
+					$wheres2   = array();
+					$wheres2[] = 'LOWER(a.title) LIKE LOWER(' . $word . ')';
+					$wheres2[] = 'LOWER(a.introtext) LIKE LOWER(' . $word . ')';
+					$wheres2[] = 'LOWER(a.fulltext) LIKE LOWER(' . $word . ')';
+					$wheres2[] = 'LOWER(a.metakey) LIKE LOWER(' . $word . ')';
+					$wheres2[] = 'LOWER(a.metadesc) LIKE LOWER(' . $word . ')';
+					$wheres[]  = implode(' OR ', $wheres2);
 				}
 
 				$where = '(' . implode(($phrase == 'all' ? ') AND (' : ') OR ('), $wheres) . ')';
@@ -154,15 +150,15 @@ class PlgSearchContent extends JPlugin
 			$query->clear();
 
 			// SQLSRV changes.
-			$case_when = ' CASE WHEN ';
+			$case_when  = ' CASE WHEN ';
 			$case_when .= $query->charLength('a.alias', '!=', '0');
 			$case_when .= ' THEN ';
-			$a_id = $query->castAsChar('a.id');
+			$a_id       = $query->castAsChar('a.id');
 			$case_when .= $query->concatenate(array($a_id, 'a.alias'), ':');
 			$case_when .= ' ELSE ';
 			$case_when .= $a_id . ' END as slug';
 
-			$case_when1 = ' CASE WHEN ';
+			$case_when1  = ' CASE WHEN ';
 			$case_when1 .= $query->charLength('c.alias', '!=', '0');
 			$case_when1 .= ' THEN ';
 			$c_id = $query->castAsChar('c.id');
@@ -170,7 +166,7 @@ class PlgSearchContent extends JPlugin
 			$case_when1 .= ' ELSE ';
 			$case_when1 .= $c_id . ' END as catslug';
 
-			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created')
+			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created, a.language, a.catid')
 				->select($query->concatenate(array('a.introtext', 'a.fulltext')) . ' AS text')
 				->select('c.title AS section, ' . $case_when . ',' . $case_when1 . ', ' . '\'2\' AS browsernav')
 
@@ -182,7 +178,7 @@ class PlgSearchContent extends JPlugin
 						. 'AND (a.publish_up = ' . $db->quote($nullDate) . ' OR a.publish_up <= ' . $db->quote($now) . ') '
 						. 'AND (a.publish_down = ' . $db->quote($nullDate) . ' OR a.publish_down >= ' . $db->quote($now) . ')'
 				)
-				->group('a.id, a.title, a.metadesc, a.metakey, a.created, a.introtext, a.fulltext, c.title, a.alias, c.alias, c.id')
+				->group('a.id, a.title, a.metadesc, a.metakey, a.created, a.language, a.catid, a.introtext, a.fulltext, c.title, a.alias, c.alias, c.id')
 				->order($order);
 
 			// Filter by language.
@@ -193,14 +189,23 @@ class PlgSearchContent extends JPlugin
 			}
 
 			$db->setQuery($query, 0, $limit);
-			$list = $db->loadObjectList();
+
+			try
+			{
+				$list = $db->loadObjectList();
+			}
+			catch (RuntimeException $e)
+			{
+				$list = array();
+				JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
+			}
 			$limit -= count($list);
 
 			if (isset($list))
 			{
 				foreach ($list as $key => $item)
 				{
-					$list[$key]->href = ContentHelperRoute::getArticleRoute($item->slug, $item->catslug);
+					$list[$key]->href = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
 				}
 			}
 
@@ -213,15 +218,15 @@ class PlgSearchContent extends JPlugin
 			$query->clear();
 
 			// SQLSRV changes.
-			$case_when = ' CASE WHEN ';
+			$case_when  = ' CASE WHEN ';
 			$case_when .= $query->charLength('a.alias', '!=', '0');
 			$case_when .= ' THEN ';
-			$a_id = $query->castAsChar('a.id');
+			$a_id       = $query->castAsChar('a.id');
 			$case_when .= $query->concatenate(array($a_id, 'a.alias'), ':');
 			$case_when .= ' ELSE ';
 			$case_when .= $a_id . ' END as slug';
 
-			$case_when1 = ' CASE WHEN ';
+			$case_when1  = ' CASE WHEN ';
 			$case_when1 .= $query->charLength('c.alias', '!=', '0');
 			$case_when1 .= ' THEN ';
 			$c_id = $query->castAsChar('c.id');
@@ -255,7 +260,16 @@ class PlgSearchContent extends JPlugin
 			}
 
 			$db->setQuery($query, 0, $limit);
-			$list3 = $db->loadObjectList();
+
+			try
+			{
+				$list3 = $db->loadObjectList();
+			}
+			catch (RuntimeException $e)
+			{
+				$list3 = array();
+				JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
+			}
 
 			// Find an itemid for archived to use if there isn't another one.
 			$item = $app->getMenu()->getItems('link', 'index.php?option=com_content&view=archive', true);
@@ -268,7 +282,7 @@ class PlgSearchContent extends JPlugin
 					$date = JFactory::getDate($item->created);
 
 					$created_month = $date->format("n");
-					$created_year = $date->format("Y");
+					$created_year  = $date->format("Y");
 
 					$list3[$key]->href = JRoute::_('index.php?option=com_content&view=archive&year=' . $created_year . '&month=' . $created_month . $itemid);
 				}
@@ -287,7 +301,7 @@ class PlgSearchContent extends JPlugin
 
 				foreach ($row as $article)
 				{
-					if (SearchHelper::checkNoHTML($article, $searchText, array('text', 'title', 'metadesc', 'metakey')))
+					if (SearchHelper::checkNoHtml($article, $searchText, array('text', 'title', 'metadesc', 'metakey')))
 					{
 						$new_row[] = $article;
 					}

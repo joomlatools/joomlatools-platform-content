@@ -19,9 +19,7 @@
   ],
   "require": {
     "php": ">=5.5.0",
-    "joomlatools/composer": "*",
-    "joomlatools/platform-categories": "*",
-    "joomlatools/platform-legacy": "^1.0.0"
+    "joomlatools/composer": "*"
   },
   "autoload": {
     "files": ["autoload.php"]
