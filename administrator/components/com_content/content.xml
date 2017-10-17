@@ -24,6 +24,8 @@
         </sql>
     </uninstall>
 
+    <scriptfile>resources/install/install.php</scriptfile>
+
     <files folder="../../../site/components/com_content">
 		<filename>content.php</filename>
 		<filename>controller.php</filename>
