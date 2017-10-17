@@ -172,7 +172,7 @@ INSERT INTO `categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, 
 
 INSERT INTO `assets` (`parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`)
 VALUES
-    ((SELECT `id` FROM (SELECT * FROM `assets`) AS `assets_table` WHERE `name` = 'com_content'), (SELECT `rgt` FROM (SELECT * FROM `assets`) AS `assets_table` WHERE `parent_id` = 1 ORDER BY `rgt` DESC LIMIT 1), (SELECT `rgt` + 1 FROM (SELECT * FROM `assets`) AS `assets_table` WHERE `parent_id` = 1 ORDER BY `rgt` DESC LIMIT 1), 2, 'com_content.category.2', 'Uncategorised', '{}');
+    ((SELECT `id` FROM (SELECT * FROM `assets`) AS `assets_table` WHERE `name` = 'com_content'), (SELECT `rgt` FROM (SELECT * FROM `assets`) AS `assets_table` WHERE `parent_id` = 1 ORDER BY `rgt` DESC LIMIT 1), (SELECT `rgt` + 1 FROM (SELECT * FROM `assets`) AS `assets_table` WHERE `parent_id` = 1 ORDER BY `rgt` DESC LIMIT 1), 2, (SELECT CONCAT('com_content.category.', `id`) FROM `categories` WHERE `title` = 'Uncategorised' AND `extension` = 'com_content'), 'Uncategorised', '{}');
 
 --
 -- Set the asset_id of Uncategorised category
