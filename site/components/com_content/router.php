@@ -31,7 +31,7 @@ class ContentRouter extends JComponentRouterBase
 
 		// Get a menu item based on Itemid or currently active
 		$params = JComponentHelper::getParams('com_content');
-		$advanced = $params->get('sef_advanced_link', 0);
+		$advanced = $params->get('sef_advanced_link', JFactory::getConfig()->get('sef_advance', 1));
 
 		// Unset limitstart=0 since it's pointless
 		if (isset($query['limitstart']) && $query['limitstart'] == 0)
@@ -291,7 +291,7 @@ class ContentRouter extends JComponentRouterBase
 		// Get the active menu item.
 		$item = $this->menu->getActive();
 		$params = JComponentHelper::getParams('com_content');
-		$advanced = $params->get('sef_advanced_link', 0);
+		$advanced = $params->get('sef_advanced_link', JFactory::getConfig()->get('sef_advance', 1));
 		$db = JFactory::getDbo();
 
 		// Count route segments
