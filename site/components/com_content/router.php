@@ -326,17 +326,18 @@ class ContentRouter extends JComponentRouterBase
 		 */
 		if ($count == 1)
 		{
-			// We check to see if an alias is given.  If not, we assume it is an article
-			/*
-			// This returns 404 error when accessing a category view with a single word alias, it assumes its an article but its a category.
-			if (strpos($segments[0], ':') === false)
+			if (!$advanced)
 			{
-				$vars['view'] = 'article';
-				$vars['id'] = (int) $segments[0];
+				// This returns 404 error when accessing a category view with a single word alias, it assumes its an article but its a category. (Dont run this check if sef_advanced_link is enabled)
+				// We check to see if an alias is given.  If not, we assume it is an article
+				if (strpos($segments[0], ':') === false)
+				{
+					$vars['view'] = 'article';
+					$vars['id'] = (int) $segments[0];
 
-				return $vars;
+					return $vars;
+				}
 			}
-			*/
 
 			@list($id, $alias) = explode(':', $segments[0], 2);
 
