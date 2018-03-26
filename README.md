@@ -4,21 +4,21 @@
 
 Joomla Content is an article management extension for the [Joomlatools Platform] supporting content tagging and versioning.
 
-> Forked from [Joomla CMS v3.3.6](https://github.com/joomla/joomla-cms/releases/tag/3.3.6)
+> Forked from [Joomla CMS v3.6.5](https://github.com/joomla/joomla-cms/releases/tag/3.6.5)
 
 ## Requirements
 
-- PHP 5.5 or newer
+- PHP 7.0 or newer
 - MySQL 5
 
 ## Installation
 
-Joomla Content can and should be installed by using [Composer](https://getcomposer.org/). 
+Joomla Content can and should be installed by using [Composer](https://getcomposer.org/).
 
 Go to the root directory of your Joomla Platform installation using the command line and execute following command:
 
 ```
-composer require joomlatools/platform-content:1.*
+composer require joomlatools/platform-content:2.*
 ```
 
 ## Contributing
