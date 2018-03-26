@@ -19,7 +19,9 @@
   ],
   "require": {
     "php": ">=7.0",
-    "joomlatools/composer": "*"
+    "joomlatools/composer": "*",
+    "joomlatools/platform-categories": "^2.0.0",
+    "joomlatools/platform-legacy": "^2.0.0"
   },
   "autoload": {
     "files": ["autoload.php"]
