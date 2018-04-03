@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.1" type="plugin" group="content" method="upgrade">
+<extension version="2.0.0" type="plugin" group="content" method="upgrade">
 	<name>plg_content_ucm</name>
     <author>Joomlatools</author>
 	<creationDate>November 2010</creationDate>
@@ -9,7 +9,7 @@
     <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>info@joomlatools.com</authorEmail>
     <authorUrl>www.joomlatools.com</authorUrl>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 	<description>PLG_CONTENT_UCM_XML_DESCRIPTION</description>
 
 	<files>
